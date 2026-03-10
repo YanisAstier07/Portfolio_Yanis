@@ -260,28 +260,33 @@
     .tbadge{display:inline-block;margin-top:.5rem;padding:.18rem .55rem;border:1px solid rgba(0,229,160,.35);font-family:'DM Mono',monospace;font-size:.65rem;color:var(--accent);letter-spacing:.07em}
 
     /* ── CONTACT ── */
-    #contact{padding:8rem 3rem;text-align:center}
-    .contact-title{font-size:clamp(2.2rem,7vw,5.5rem);font-weight:800;line-height:.92;letter-spacing:-.03em;margin-bottom:1.5rem}
-    .contact-title .ac{color:var(--accent)}
-    .contact-sub{font-size:.95rem;color:var(--muted);max-width:460px;margin:0 auto 3rem;line-height:1.75}
-    .contact-links{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap}
-    .clink{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 1.8rem;border:1px solid var(--border);color:var(--text);text-decoration:none;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:all .3s;white-space:nowrap}
-    .clink:hover{border-color:var(--accent);color:var(--accent)}
-    .clink.p{background:var(--accent);border-color:var(--accent);color:#07070d}
-    .clink.p:hover{box-shadow:0 8px 28px rgba(0,229,160,.28);transform:translateY(-2px)}
+#contact { padding: 8rem 3rem; text-align: center; }
+.contact-title { font-size: clamp(2.2rem, 7vw, 5.5rem); font-weight: 800; line-height: .92; letter-spacing: -.03em; margin-bottom: 1.5rem; }
+.contact-title .ac { color: var(--accent); }
+.contact-sub { font-size: .95rem; color: var(--muted); max-width: 460px; margin: 0 auto 3rem; line-height: 1.75; }
+.contact-links { display: flex; gap: .9rem; justify-content: center; flex-wrap: wrap; }
 
-    .contact-option{display:flex;align-items:center;gap:1rem;padding:1.2rem 1.4rem;border:1px solid var(--border);background:var(--card);text-decoration:none;color:var(--text);transition:border-color .3s,transform .3s,background .3s;margin-bottom:.9rem}
-    .contact-option:hover{border-color:var(--accent);transform:translateX(4px);background:rgba(0,229,160,.04)}
-    .contact-option:last-child{margin-bottom:0}
-    .co-icon{font-size:1.6rem;flex-shrink:0;width:40px;text-align:center}
-    .co-body{flex:1;min-width:0}
-    .co-label{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.2rem}
-    .co-val{font-size:.95rem;font-weight:700;margin-bottom:.15rem}
-    .co-hint{font-size:.72rem;color:var(--muted)}
-    .co-arrow{color:var(--muted);font-size:1rem;flex-shrink:0;transition:color .3s,transform .3s}
-    .contact-option:hover .co-arrow{color:var(--accent);transform:translateX(3px)}
+.contact-option { display: flex; align-items: center; gap: 1rem; padding: 1.2rem 1.4rem; border: 1px solid var(--border); background: var(--card); text-decoration: none; color: var(--text); transition: border-color .3s, transform .3s, background .3s; margin-bottom: .9rem; text-align: left; }
+.contact-option:hover { border-color: var(--accent); transform: translateX(4px); background: rgba(0,229,160,.04); }
+.contact-option:last-child { margin-bottom: 0; }
 
-    footer{padding:1.8rem 3rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted);flex-wrap:wrap;gap:.8rem}
+.co-icon { font-size: 1.6rem; flex-shrink: 0; width: 40px; text-align: center; }
+.co-body { flex: 1; min-width: 0; }
+.co-label { font-family: 'DM Mono', monospace; font-size: .62rem; color: var(--accent); letter-spacing: .1em; text-transform: uppercase; margin-bottom: .2rem; }
+.co-val { font-size: .95rem; font-weight: 700; margin-bottom: .15rem; }
+
+/* --- LA MODIFICATION ICI --- */
+.protected-val { 
+    unicode-bidi: bidi-override; 
+    direction: rtl; 
+    display: inline-block; 
+}
+
+.co-hint { font-size: .72rem; color: var(--muted); }
+.co-arrow { color: var(--muted); font-size: 1rem; flex-shrink: 0; transition: color .3s, transform .3s; }
+.contact-option:hover .co-arrow { color: var(--accent); transform: translateX(3px); }
+
+footer { padding: 1.8rem 3rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-family: 'DM Mono', monospace; font-size: .65rem; color: var(--muted); flex-wrap: wrap; gap: .8rem; }
 
     /* ── ANIMATIONS ── */
     @keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
