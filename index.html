@@ -271,15 +271,33 @@
     </div>
   </section>
 
-  <section id="contact">
-    <h2 class="contact-title">Travaillons<br/><span class="ac">ensemble.</span></h2>
-    <p class="contact-sub">N'hésitez pas à me contacter pour toute opportunité ou collaboration.</p>
-    <div class="contact-links">
-      <button class="btn btn-p" onclick="openContactModal()" style="padding: 1rem 2rem; min-width: 220px;">
-        ✉ Me contacter
-      </button>
-    </div>
-  </section>
+  <section id="contact" style="text-align: center; padding: 8rem 2rem;">
+  <h2 class="contact-title" style="margin-bottom: 2rem;">Travaillons<br/><span class="ac" style="color: var(--accent);">ensemble.</span></h2>
+  
+  <div class="contact-links" style="display: flex; justify-content: center;">
+    <button class="btn btn-p" onclick="openContactModal()" 
+      style="
+        background: var(--accent); 
+        color: #07070d; 
+        padding: 1.2rem 2.8rem; 
+        font-family: 'Syne', sans-serif; 
+        font-weight: 800; 
+        font-size: 1.1rem; 
+        text-transform: uppercase; 
+        letter-spacing: 0.1em; 
+        border: none; 
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+      "
+      onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 30px rgba(0,229,160,0.4)';"
+      onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+      ✉ Me contacter
+    </button>
+  </div>
+</section>
 
   <footer>
     <span>© 2025 Yanis Astier</span>
