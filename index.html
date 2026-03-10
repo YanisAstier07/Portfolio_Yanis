@@ -45,23 +45,23 @@
 
     /* ── HERO ── */
     #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:calc(var(--nav-h)+3rem) 3rem 4rem}
-    .eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-family:'DM Mono',monospace;font-size:.72rem;color:var(--accent);letter-spacing:.12em;margin-bottom:1.8rem;animation:up .8s .05s both}
+    .eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-family:'DM Mono',monospace;font-size:.72rem;color:var(--accent);letter-spacing:.12em;margin-bottom:1.8rem;animation:up .6s ease both}
     .eyebrow::before{content:'';display:block;width:22px;height:1px;background:var(--accent)}
-    .hero-name{font-size:clamp(3.2rem,10vw,8rem);font-weight:800;line-height:.88;letter-spacing:-.03em;animation:up .85s .1s both}
+    .hero-name{font-size:clamp(3.2rem,10vw,8rem);font-weight:800;line-height:.88;letter-spacing:-.03em;animation:up .6s ease both}
     .hero-name .stroke{color:transparent;-webkit-text-stroke:1.5px var(--accent)}
-    .hero-sub{margin-top:2rem;max-width:520px;font-size:1rem;color:var(--muted);line-height:1.75;animation:up .85s .2s both}
+    .hero-sub{margin-top:2rem;max-width:520px;font-size:1rem;color:var(--muted);line-height:1.75;animation:up .6s ease both}
     .hero-sub strong{color:var(--text)}
-    .dispo{display:inline-flex;align-items:center;gap:.7rem;margin-top:1.6rem;padding:.5rem 1rem;border:1px solid rgba(0,229,160,.3);background:rgba(0,229,160,.06);font-family:'DM Mono',monospace;font-size:.72rem;color:var(--accent);letter-spacing:.08em;animation:up .85s .3s both}
+    .dispo{display:inline-flex;align-items:center;gap:.7rem;margin-top:1.6rem;padding:.5rem 1rem;border:1px solid rgba(0,229,160,.3);background:rgba(0,229,160,.06);font-family:'DM Mono',monospace;font-size:.72rem;color:var(--accent);letter-spacing:.08em;animation:up .6s ease both}
     .dot{width:7px;height:7px;background:var(--accent);border-radius:50%;flex-shrink:0;animation:glow 1.5s infinite}
-    .hero-btns{display:flex;gap:.9rem;margin-top:2.5rem;flex-wrap:wrap;animation:up .85s .38s both}
+    .hero-btns{display:flex;gap:.9rem;margin-top:2.5rem;flex-wrap:wrap;animation:up .6s ease both}
     .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.8rem;font-family:'Syne',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:transform .2s,box-shadow .2s,border-color .2s,color .2s;white-space:nowrap}
     .btn-p{background:var(--accent);color:#07070d}
     .btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,229,160,.3)}
     .btn-s{border:1px solid var(--border);color:var(--text)}
     .btn-s:hover{border-color:var(--accent);color:var(--accent)}
-    .hero-badge{position:absolute;right:3rem;top:50%;transform:translateY(-50%);width:150px;height:150px;animation:spin 22s linear infinite,fade .8s .6s both}
+    .hero-badge{position:absolute;right:3rem;top:50%;transform:translateY(-50%);width:150px;height:150px;animation:spin 22s linear infinite}
     .hero-badge svg{width:100%;height:100%}
-    .scroll-hint{position:absolute;bottom:2.5rem;left:3rem;font-family:'DM Mono',monospace;font-size:.66rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;display:flex;align-items:center;gap:1rem;animation:fade 1s .8s both}
+    .scroll-hint{position:absolute;bottom:2.5rem;left:3rem;font-family:'DM Mono',monospace;font-size:.66rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;display:flex;align-items:center;gap:1rem;animation:fade .6s ease forwards}
     .scroll-hint::after{content:'';display:block;width:52px;height:1px;background:var(--muted)}
 
     /* ── SHARED ── */
@@ -252,7 +252,7 @@
     #parcours{padding:7rem 3rem;border-top:1px solid var(--border)}
     .timeline{position:relative;max-width:740px;margin-top:2.8rem}
     .timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--border)}
-    .titem{padding-left:3rem;margin-bottom:2.8rem;position:relative;opacity:0;transform:translateX(-18px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+    .titem{padding-left:3rem;margin-bottom:2.8rem;position:relative;opacity:1;transform:translateX(0);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
     .titem.tvis{opacity:1;transform:translateX(0)}
     .tdot{position:absolute;left:-5px;top:6px;width:11px;height:11px;background:var(--accent);border:2px solid var(--bg)}
     .tdate{font-family:'DM Mono',monospace;font-size:.67rem;color:var(--accent);letter-spacing:.1em;margin-bottom:.35rem}
@@ -286,13 +286,13 @@
     footer{padding:1.8rem 3rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted);flex-wrap:wrap;gap:.8rem}
 
     /* ── ANIMATIONS ── */
-    @keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes fade{from{opacity:0}to{opacity:1}}
+    @keyframes up{from{opacity:0.3;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fade{from{opacity:0.3}to{opacity:1}}
     @keyframes slidex{to{opacity:1;transform:translateX(0)}}
     @keyframes fill{to{transform:scaleX(1)}}
     @keyframes spin{from{transform:translateY(-50%) rotate(0deg)}to{transform:translateY(-50%) rotate(360deg)}}
     @keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(0,229,160,.5)}50%{box-shadow:0 0 0 5px rgba(0,229,160,0)}}
-    .sr{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
+    .sr{opacity:1;transform:translateY(0);transition:opacity .6s,transform .6s}
     .sr.vis{opacity:1;transform:translateY(0)}
 
     /* ── RESPONSIVE ── */
@@ -326,7 +326,10 @@
       .sg-grid{grid-template-columns:1fr}
       .projets-grid{grid-template-columns:1fr}
     }
+    /* FALLBACK: si JS ne charge pas, tout reste visible */
+    @media (prefers-reduced-motion: no-preference) {}
   </style>
+  <noscript><style>.sr,.titem{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
   <div class="gbg"></div>
@@ -758,8 +761,10 @@
     }
 
     /* ── SCROLL REVEAL ── */
-    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}})},{threshold:0.07});
+    function revealAll(){document.querySelectorAll('.sr').forEach(el=>el.classList.add('vis'))}
+    const obs = new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}})},{threshold:0.05,rootMargin:'0px 0px -20px 0px'});
     document.querySelectorAll('.sr').forEach(el=>obs.observe(el));
+    setTimeout(()=>{document.querySelectorAll('.sr:not(.vis)').forEach(el=>el.classList.add('vis'))},800);
 
     /* ── NAV ACTIVE ── */
     const sections=document.querySelectorAll('section[id]');
@@ -1028,7 +1033,11 @@
     function carNext(id,total){const cur=carState[id]||0;carGo(id,(cur+1)%total,total)}
     function carPrev(id,total){const cur=carState[id]||0;carGo(id,(cur-1+total)%total,total)}
 
+    /* ── INIT ── */
+    renderProjects();
+
     /* ── TIMELINE REVEAL ── */
+    setTimeout(()=>{document.querySelectorAll('.titem:not(.tvis)').forEach(el=>el.classList.add('tvis'))},1000);
     const tobs=new IntersectionObserver(entries=>{
       entries.forEach(e=>{
         if(e.isIntersecting){
