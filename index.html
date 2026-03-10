@@ -155,6 +155,8 @@
     .proj-files{display:flex;flex-wrap:wrap;gap:.4rem}
     .proj-file-link{display:inline-flex;align-items:center;gap:.3rem;padding:.25rem .6rem;border:1px solid rgba(91,106,255,.35);font-family:'DM Mono',monospace;font-size:.65rem;color:var(--accent2);text-decoration:none;transition:border-color .2s,color .2s}
     .proj-file-link:hover{border-color:var(--accent2);color:var(--text)}
+    .proj-site-link{display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .85rem;border:1px solid rgba(0,229,160,.4);font-family:'DM Mono',monospace;font-size:.68rem;color:var(--accent);text-decoration:none;transition:all .2s;margin-top:.5rem}
+    .proj-site-link:hover{background:rgba(0,229,160,.1);border-color:var(--accent)}
 
     /* Add project card */
     .proj-add{border:1px dashed var(--border);background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:3rem 2rem;cursor:pointer;transition:border-color .3s,background .3s;min-height:320px}
@@ -648,7 +650,6 @@
   <footer>
     <span>© 2025 Yanis Astier</span>
     <span>BTS SIO · SISR · Lycée Le Rebours — Paris 13</span>
-
   </footer>
 
   <!-- MODAL AJOUT PROJET -->
@@ -707,7 +708,7 @@
     </div>
   </div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     /* ── CONTACT MODAL ── */
     function openContactModal(){
       document.getElementById('contactOverlay').classList.add('open');
@@ -754,11 +755,63 @@
     ══════════════════════════════════ */
     function saveToStorage(){try{localStorage.setItem('ya_projects',JSON.stringify(projects));}catch(e){}}
     function loadFromStorage(){try{const d=localStorage.getItem('ya_projects');return d?JSON.parse(d):null;}catch(e){return null;}}
+
+    // ─── DEFAULT PROJECTS avec images ───
     const DEFAULT_PROJECTS=[
-      {id:1,name:"MexiGO — Site vitrine sur le Mexique",type:"Développement Web",desc:"Mise en place d'un site vitrine sur le Mexique intitulé MexiGO. Gestion du patrimoine informatique, développement de la présence en ligne et travail en mode projet.",tags:["HTML","CSS","Bootstrap","Site vitrine"],images:[],files:[],period:"30/09/2025 au 18/11/2025"},
-      {id:2,name:"Anar — Site vitrine restaurant sous WordPress",type:"Développement Web",desc:"Mise en place d'un site vitrine sous WordPress pour le restaurant Anar, hébergé sur OVH à l'aide de FileZilla. Gestion du patrimoine informatique, réponse aux demandes, présence en ligne, mode projet et mise à disposition d'un service informatique.",tags:["WordPress","OVH","FileZilla","Hébergement"],images:[],files:[],period:"03/02/2026 au 17/02/2026"},
-      {id:3,name:"Veille technologique — VPN modernes",type:"Cybersécurité / Réseaux",desc:"Réalisation d'une veille technologique sur les VPN modernes à l'aide de Feedly, Google Alerts et Inoreader. Gestion du patrimoine informatique, réponse aux demandes et développement professionnel.",tags:["VPN","Feedly","Google Alerts","Inoreader","Veille"],images:[],files:[],period:"20/12/2025 au 01/01/2026"}
+      {
+        id:1,
+        name:"MexiGO — Site vitrine sur le Mexique",
+        type:"Développement Web",
+        desc:"Mise en place d'un site vitrine sur le Mexique intitulé MexiGO. Gestion du patrimoine informatique, développement de la présence en ligne et travail en mode projet.",
+        tags:["HTML","CSS","Bootstrap","Site vitrine"],
+        images:[],
+        externalImages:[
+          {
+            name:"Aperçu MexiGO",
+            url:"https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?w=800&q=80",
+            caption:"Site vitrine MexiGO"
+          }
+        ],
+        files:[],
+        period:"30/09/2025 au 18/11/2025"
+      },
+      {
+        id:2,
+        name:"Anar — Site vitrine restaurant sous WordPress",
+        type:"Développement Web",
+        desc:"Mise en place d'un site vitrine sous WordPress pour le restaurant Anar, hébergé sur OVH à l'aide de FileZilla. Gestion du patrimoine informatique, réponse aux demandes, présence en ligne, mode projet et mise à disposition d'un service informatique.",
+        tags:["WordPress","OVH","FileZilla","Hébergement"],
+        images:[],
+        externalImages:[
+          {
+            name:"Logo Anar Restaurant",
+            url:"https://sio2027-wp-yanis-lucas-romain.sio1-2lerebours.org/wp-content/uploads/2026/02/587404789_17941512870095538_3419099802979921064_n-1.jpg",
+            caption:"Logo Anar Restaurant"
+          }
+        ],
+        files:[],
+        link:"http://sio2027-wp-yanis-lucas-romain.sio1-2lerebours.org/",
+        period:"03/02/2026 au 17/02/2026"
+      },
+      {
+        id:3,
+        name:"Veille technologique — VPN modernes",
+        type:"Cybersécurité / Réseaux",
+        desc:"Réalisation d'une veille technologique sur les VPN modernes à l'aide de Feedly, Google Alerts et Inoreader. Gestion du patrimoine informatique, réponse aux demandes et développement professionnel.",
+        tags:["VPN","Feedly","Google Alerts","Inoreader","Veille"],
+        images:[],
+        externalImages:[
+          {
+            name:"Veille technologique cybersécurité",
+            url:"https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
+            caption:"Veille sur les protocoles VPN"
+          }
+        ],
+        files:[],
+        period:"20/12/2025 au 01/01/2026"
+      }
     ];
+
     let projects = loadFromStorage() ?? DEFAULT_PROJECTS;
     let editingId = null;
     let currentTags = [];
@@ -891,6 +944,15 @@
       if(confirm('Supprimer ce projet ?')){projects=projects.filter(p=>p.id!==id);renderProjects();saveToStorage()}
     }
 
+    /* ── HELPERS ── */
+    // Returns all images (uploaded base64 + external url) as unified array
+    function getAllImages(p){
+      const imgs = [];
+      if(p.images) p.images.forEach(i=>imgs.push({src:i.dataURL,name:i.name}));
+      if(p.externalImages) p.externalImages.forEach(i=>imgs.push({src:i.url,name:i.name||i.caption||''}));
+      return imgs;
+    }
+
     /* ── RENDER PROJECTS ── */
     function renderProjects(){
       const grid=document.getElementById('projetsGrid');
@@ -901,35 +963,38 @@
         return;
       }
       empty.style.display='none';
-      grid.innerHTML=projects.map((p,idx)=>`
+      grid.innerHTML=projects.map((p,idx)=>{
+        const allImgs = getAllImages(p);
+        return `
         <div class="proj-card sr">
           <button class="proj-del" onclick="deleteProject(${p.id})" title="Supprimer">✕</button>
-          ${p.images.length>0 ? renderCarousel(p,idx) : `<div class="proj-screenshots-empty"><span>🖼️</span>Aucune image</div>`}
+          ${allImgs.length>0 ? renderCarousel(p,idx,allImgs) : `<div class="proj-screenshots-empty"><span>🖼️</span>Aucune image</div>`}
           <div class="proj-body">
             <div class="proj-num">${String(idx+1).padStart(2,'0')}</div>
             ${p.type?`<div class="proj-type">${p.type}</div>`:''}
             ${p.period?`<div style="font-family:'DM Mono',monospace;font-size:.62rem;color:var(--accent);letter-spacing:.08em;margin-bottom:.4rem">📅 ${p.period}</div>`:''}
             <div class="proj-name">${p.name}</div>
             ${p.desc?`<div class="proj-desc">${p.desc}</div>`:''}
-            ${p.tags.length?`<div class="proj-tags">${p.tags.map(t=>`<span class="proj-tag">${t}</span>`).join('')}</div>`:''}
-            ${p.files.length?`<div class="proj-files">${p.files.map(f=>`<a href="${f.dataURL}" download="${f.name}" class="proj-file-link">📎 ${f.name}</a>`).join('')}</div>`:''}
+            ${p.tags&&p.tags.length?`<div class="proj-tags">${p.tags.map(t=>`<span class="proj-tag">${t}</span>`).join('')}</div>`:''}
+            ${p.files&&p.files.length?`<div class="proj-files">${p.files.map(f=>`<a href="${f.dataURL}" download="${f.name}" class="proj-file-link">📎 ${f.name}</a>`).join('')}</div>`:''}
+            ${p.link?`<a href="${p.link}" target="_blank" rel="noopener" class="proj-site-link">🌐 Voir le site →</a>`:''}
             <button onclick="openModal(${p.id})" style="margin-top:.8rem;background:none;border:1px solid var(--border);color:var(--muted);padding:.35rem .8rem;font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.08em;cursor:pointer;text-transform:uppercase;transition:border-color .2s,color .2s" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">✏ Modifier</button>
           </div>
-        </div>`).join('');
-      // Observe new .sr elements
+        </div>`;
+      }).join('');
       grid.querySelectorAll('.sr').forEach(el=>obs.observe(el));
     }
 
-    function renderCarousel(p,idx){
-      if(p.images.length===1){
-        return `<div class="proj-screenshots"><div class="proj-imgs"><img class="proj-img" src="${p.images[0].dataURL}" alt="${p.images[0].name}"/></div></div>`;
+    function renderCarousel(p,idx,allImgs){
+      if(allImgs.length===1){
+        return `<div class="proj-screenshots"><div class="proj-imgs"><img class="proj-img" src="${allImgs[0].src}" alt="${allImgs[0].name}" onerror="this.style.display='none'"/></div></div>`;
       }
       const id=`car-${p.id}`;
       return `<div class="proj-screenshots" id="${id}">
-        <div class="proj-imgs" id="${id}-track">${p.images.map(img=>`<img class="proj-img" src="${img.dataURL}" alt="${img.name}"/>`).join('')}</div>
-        <button class="proj-prev" onclick="carPrev('${id}',${p.images.length})">‹</button>
-        <button class="proj-next" onclick="carNext('${id}',${p.images.length})">›</button>
-        <div class="proj-nav">${p.images.map((_,i)=>`<div class="proj-dot${i===0?' active':''}" onclick="carGo('${id}',${i},${p.images.length})"></div>`).join('')}</div>
+        <div class="proj-imgs" id="${id}-track">${allImgs.map(img=>`<img class="proj-img" src="${img.src}" alt="${img.name}" onerror="this.style.background='var(--bg)'"/>`).join('')}</div>
+        <button class="proj-prev" onclick="carPrev('${id}',${allImgs.length})">‹</button>
+        <button class="proj-next" onclick="carNext('${id}',${allImgs.length})">›</button>
+        <div class="proj-nav">${allImgs.map((_,i)=>`<div class="proj-dot${i===0?' active':''}" onclick="carGo('${id}',${i},${allImgs.length})"></div>`).join('')}</div>
       </div>`;
     }
 
