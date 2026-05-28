@@ -413,10 +413,6 @@
           <span class="info-ico">✉️</span>
           <div><div class="info-lbl">Email</div><div class="info-val"><a href="mailto:yastier@lerebours.fr">yastier@lerebours.fr</a></div></div>
         </div>
-        <div class="info-row sr">
-          <span class="info-ico">📍</span>
-          <div><div class="info-lbl">Adresse</div><div class="info-val">38C Rue Sinoël, Crécy-la-Chapelle</div></div>
-        </div>
       </div>
       <div class="label" style="margin-top:2.2rem">Langues</div>
       <div class="mini-grid">
@@ -664,7 +660,6 @@
   <footer>
     <span>© 2025 Yanis Astier</span>
     <span>BTS SIO · SISR · Lycée Le Rebours — Paris 13</span>
-
   </footer>
 
   <!-- MODAL AJOUT PROJET -->
@@ -723,7 +718,7 @@
     </div>
   </div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     /* ── CONTACT MODAL ── */
     function openContactModal(){
       document.getElementById('contactOverlay').classList.add('open');
@@ -778,8 +773,8 @@
     let projects = loadFromStorage() ?? DEFAULT_PROJECTS;
     let editingId = null;
     let currentTags = [];
-    let currentImages = []; // {name, dataURL}
-    let currentFiles  = []; // {name, dataURL, type}
+    let currentImages = [];
+    let currentFiles  = [];
 
     /* ── MODAL OPEN/CLOSE ── */
     function openModal(id=null){
@@ -932,7 +927,6 @@
             <button onclick="openModal(${p.id})" style="margin-top:.8rem;background:none;border:1px solid var(--border);color:var(--muted);padding:.35rem .8rem;font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.08em;cursor:pointer;text-transform:uppercase;transition:border-color .2s,color .2s" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">✏ Modifier</button>
           </div>
         </div>`).join('');
-      // Observe new .sr elements
       grid.querySelectorAll('.sr').forEach(el=>obs.observe(el));
     }
 
