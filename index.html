@@ -106,6 +106,10 @@
     .bar-label span:last-child{font-family:'DM Mono',monospace;color:var(--accent);font-size:.7rem}
     .bar-track{height:3px;background:var(--border)}
     .bar-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));transform:scaleX(0);transform-origin:left;animation:fill 1.2s cubic-bezier(.16,1,.3,1) .5s forwards}
+    .skill-level-item{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;border-bottom:1px solid var(--border)}
+    .skill-level-item:last-child{border-bottom:none}
+    .skill-level-name{font-size:.85rem;color:var(--text)}
+    .skill-level-badge{font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(0,229,160,.35);padding:.22rem .6rem}
 
     /* ── VEILLE ── */
     #veille{padding:6rem 3rem}
@@ -231,6 +235,7 @@
     .certif-org{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem}
     .certif-name{font-size:1rem;font-weight:700;margin-bottom:.45rem}
     .certif-desc{font-size:.83rem;color:#c0c0d8;line-height:1.7}
+    .certif-note{margin-top:.6rem;font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.05em}
 
     /* ── EXPERIENCE ── */
     #experience{padding:6rem 3rem;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
@@ -434,9 +439,10 @@
     <div class="sg-grid">
       <div class="sg sr">
         <div class="sg-title">// Programmation</div>
-        <div class="bar-item"><div class="bar-label"><span>Python</span><span>55%</span></div><div class="bar-track"><div class="bar-fill" style="width:55%"></div></div></div>
-        <div class="bar-item"><div class="bar-label"><span>HTML / CSS</span><span>50%</span></div><div class="bar-track"><div class="bar-fill" style="width:50%"></div></div></div>
-        <div class="bar-item"><div class="bar-label"><span>SQL</span><span>45%</span></div><div class="bar-track"><div class="bar-fill" style="width:45%"></div></div></div>
+        <div class="skill-level-item"><span class="skill-level-name">Python</span><span class="skill-level-badge">Intermédiaire</span></div>
+        <div class="skill-level-item"><span class="skill-level-name">HTML / CSS</span><span class="skill-level-badge">Intermédiaire</span></div>
+        <div class="skill-level-item"><span class="skill-level-name">SQL</span><span class="skill-level-badge">Intermédiaire</span></div>
+        <div class="skill-level-item"><span class="skill-level-name">Bash</span><span class="skill-level-badge">Pré-intermédiaire</span></div>
       </div>
       <div class="sg sr">
         <div class="sg-title">// Outils & Logiciels</div>
@@ -445,6 +451,7 @@
           <span class="tag">Cisco Packet Tracer</span><span class="tag">VMware Workstation Pro</span>
           <span class="tag">VirtualBox</span><span class="tag">Ubuntu</span>
           <span class="tag">VSCode</span><span class="tag">Pack Office (avancé)</span>
+          <span class="tag">Warp</span><span class="tag">Draw.io</span><span class="tag">Obsidian</span>
         </div>
       </div>
       <div class="sg sr">
@@ -455,6 +462,7 @@
           <span class="tag">Firewall</span><span class="tag">Routage</span>
           <span class="tag">Linux</span><span class="tag">Windows Server</span>
           <span class="tag">Active Directory</span><span class="tag">Cybersécurité</span>
+          <span class="tag">Serveur proxy</span><span class="tag">Clé PKI</span>
         </div>
       </div>
       <div class="sg sr">
@@ -462,7 +470,7 @@
         <div class="tags">
           <span class="tag">Organisation</span><span class="tag">Sens du détail</span>
           <span class="tag">Travail en équipe</span><span class="tag">Sociable</span>
-          <span class="tag">Leadership</span><span class="tag">Autonomie</span>
+          <span class="tag">Autonomie</span>
           <span class="tag">Veille technologique</span>
         </div>
       </div>
@@ -544,6 +552,24 @@
           <div class="certif-org">Pix</div>
           <div class="certif-name">Niveau Intermédiaire 2</div>
           <div class="certif-desc">Certification des compétences numériques : utilisation du numérique et maîtrise du vocabulaire associé aux technologies.</div>
+        </div>
+      </div>
+      <div class="certif sr">
+        <div class="certif-ico">🐍</div>
+        <div>
+          <div class="certif-org">Cisco Networking Academy</div>
+          <div class="certif-name">Python Essentials</div>
+          <div class="certif-desc">Cours en ligne sur les fondamentaux de la programmation Python.</div>
+          <div class="certif-note">📄 Certificat de suivi de cours — pas une certification officielle reconnue</div>
+        </div>
+      </div>
+      <div class="certif sr">
+        <div class="certif-ico">🐧</div>
+        <div>
+          <div class="certif-org">Cisco Networking Academy</div>
+          <div class="certif-name">Linux Essentials</div>
+          <div class="certif-desc">Cours en ligne sur les fondamentaux du système d'exploitation Linux.</div>
+          <div class="certif-note">📄 Certificat de suivi de cours — pas une certification officielle reconnue</div>
         </div>
       </div>
     </div>
@@ -768,7 +794,8 @@
     const DEFAULT_PROJECTS=[
       {id:1,name:"MexiGO — Site vitrine sur le Mexique",type:"Développement Web",desc:"Mise en place d'un site vitrine sur le Mexique intitulé MexiGO. Gestion du patrimoine informatique, développement de la présence en ligne et travail en mode projet.",tags:["HTML","CSS","Bootstrap","Site vitrine"],images:[],files:[],period:"30/09/2025 au 18/11/2025"},
       {id:2,name:"Anar — Site vitrine restaurant sous WordPress",type:"Développement Web",desc:"Mise en place d'un site vitrine sous WordPress pour le restaurant Anar, hébergé sur OVH à l'aide de FileZilla. Gestion du patrimoine informatique, réponse aux demandes, présence en ligne, mode projet et mise à disposition d'un service informatique.",tags:["WordPress","OVH","FileZilla","Hébergement"],images:[],files:[],period:"03/02/2026 au 17/02/2026"},
-      {id:3,name:"Veille technologique — VPN modernes",type:"Cybersécurité / Réseaux",desc:"Réalisation d'une veille technologique sur les VPN modernes à l'aide de Feedly, Google Alerts et Inoreader. Gestion du patrimoine informatique, réponse aux demandes et développement professionnel.",tags:["VPN","Feedly","Google Alerts","Inoreader","Veille"],images:[],files:[],period:"20/12/2025 au 01/01/2026"}
+      {id:3,name:"Veille technologique — VPN modernes",type:"Cybersécurité / Réseaux",desc:"Réalisation d'une veille technologique sur les VPN modernes à l'aide de Feedly, Google Alerts et Inoreader. Gestion du patrimoine informatique, réponse aux demandes et développement professionnel.",tags:["VPN","Feedly","Google Alerts","Inoreader","Veille"],images:[],files:[],period:"20/12/2025 au 01/01/2026"},
+      {id:4,name:"NeuroLink Clinic — Infrastructure & sécurisation des accès",type:"Infrastructure & Réseaux",desc:"Projet mené à l'InfraLab, le laboratoire du Lycée Le Rebours : dans le cadre du système d'information d'une clinique spécialisée dans les augmentations cybernétiques, prise en charge de la partie SISR du projet (infrastructure, base de données, sécurisation des accès), en complément de la partie développement (SLAM) assurée par d'autres étudiants. Mise en place et administration du serveur de base de données partagé, déploiement de l'environnement réseau des trois composants applicatifs, et application des règles de cloisonnement des accès par profil (patients, médecins, personnel administratif, administrateurs).",tags:["MySQL/MariaDB","Administration serveur","Sécurisation des accès","Git","Infrastructure réseau"],images:[],files:[{name:"Dépôt GitHub",dataURL:"https://github.com/le-rebours/projet-cdc-neurolink",type:"link"}],period:"Session 2026 / 2027"}
     ];
     let projects = loadFromStorage() ?? DEFAULT_PROJECTS;
     let editingId = null;
@@ -923,7 +950,7 @@
             <div class="proj-name">${p.name}</div>
             ${p.desc?`<div class="proj-desc">${p.desc}</div>`:''}
             ${p.tags.length?`<div class="proj-tags">${p.tags.map(t=>`<span class="proj-tag">${t}</span>`).join('')}</div>`:''}
-            ${p.files.length?`<div class="proj-files">${p.files.map(f=>`<a href="${f.dataURL}" download="${f.name}" class="proj-file-link">📎 ${f.name}</a>`).join('')}</div>`:''}
+            ${p.files.length?`<div class="proj-files">${p.files.map(f=>f.dataURL.startsWith('http')?`<a href="${f.dataURL}" target="_blank" rel="noopener" class="proj-file-link">🔗 ${f.name}</a>`:`<a href="${f.dataURL}" download="${f.name}" class="proj-file-link">📎 ${f.name}</a>`).join('')}</div>`:''}
             <button onclick="openModal(${p.id})" style="margin-top:.8rem;background:none;border:1px solid var(--border);color:var(--muted);padding:.35rem .8rem;font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.08em;cursor:pointer;text-transform:uppercase;transition:border-color .2s,color .2s" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">✏ Modifier</button>
           </div>
         </div>`).join('');
