@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <script>(function(){try{var t=localStorage.getItem('ya_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');}catch(e){}})();</script>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Yanis Astier — Portfolio BTS SIO SISR</title>
@@ -10,11 +11,17 @@
     :root{
       --bg:#07070d;--surface:#0f0f18;--border:#2a2a3e;
       --accent:#00e5a0;--accent2:#7b8aff;
-      --text:#f0f0f8;--muted:#b0b0c8;--card:#13131f;
+      --text:#f0f0f8;--muted:#b0b0c8;--card:#13131f;--soft:#c8c8e0;
       --nav-h:64px;
     }
+    html[data-theme="light"]{
+      --bg:#f6f6fb;--surface:#ffffff;--border:#dcdce8;
+      --accent:#00a67c;--accent2:#5b6bff;
+      --text:#101018;--muted:#5c5c78;--card:#ffffff;--soft:#43435c;
+    }
     html{scroll-behavior:smooth}
-    body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;overflow-x:hidden}
+    body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;overflow-x:hidden;transition:background .3s,color .3s}
+    body,body *{transition:background-color .3s,border-color .3s,color .3s}
 
     body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
       background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='.03'/%3E%3C/svg%3E");opacity:.5}
@@ -26,10 +33,13 @@
     nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;height:var(--nav-h);background:rgba(7,7,13,.9);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
     .nav-logo{font-weight:800;font-size:.9rem;letter-spacing:.22em;color:var(--accent);text-transform:uppercase}
     .nav-links{display:flex;gap:1.6rem;flex-wrap:wrap}
-    .nav-links a{font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:#c0c0d8;text-decoration:none;font-weight:700;transition:color .25s;white-space:nowrap}
+    .nav-links a{font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--soft);text-decoration:none;font-weight:700;transition:color .25s;white-space:nowrap}
     .nav-links a:hover{color:var(--text)}
 
     .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+    .theme-toggle{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--border);background:var(--card);color:var(--text);cursor:pointer;font-size:1rem;flex-shrink:0;transition:border-color .25s}
+    .theme-toggle:hover{border-color:var(--accent)}
+    .nav-right{display:flex;align-items:center;gap:1rem}
     .burger span{display:block;width:22px;height:2px;background:var(--text);transition:.3s}
     .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
     .burger.open span:nth-child(2){opacity:0}
@@ -71,7 +81,7 @@
 
     /* ── ABOUT ── */
     #about{padding:7rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
-    .about-text{font-size:.98rem;color:#c8c8e0;line-height:1.85;margin-bottom:1rem}
+    .about-text{font-size:.98rem;color:var(--soft);line-height:1.85;margin-bottom:1rem}
     .hl{color:var(--text);font-weight:600}
     .mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1.5rem}
     .mini-card{border:1px solid var(--border);padding:1rem 1.1rem;background:var(--card);transition:border-color .3s,transform .3s}
@@ -99,7 +109,7 @@
     .sg:hover{border-color:rgba(0,229,160,.3)}
     .sg-title{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.4rem}
     .tags{display:flex;flex-wrap:wrap;gap:.45rem}
-    .tag{padding:.3rem .7rem;border:1px solid var(--border);font-size:.78rem;color:#c0c0d8;transition:all .2s}
+    .tag{padding:.3rem .7rem;border:1px solid var(--border);font-size:.78rem;color:var(--soft);transition:all .2s}
     .tag:hover{border-color:var(--accent);color:var(--accent)}
     .bar-item{margin-bottom:.9rem}
     .bar-label{display:flex;justify-content:space-between;margin-bottom:.35rem;font-size:.82rem}
@@ -116,13 +126,13 @@
     .veille-card{max-width:900px;border:1px solid var(--border);background:var(--card);padding:2.5rem;position:relative;overflow:hidden;margin-top:2.5rem}
     .veille-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
     .veille-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .85rem;border:1px solid rgba(91,106,255,.4);background:rgba(91,106,255,.07);font-family:'DM Mono',monospace;font-size:.68rem;color:var(--accent2);letter-spacing:.08em;margin-bottom:1.5rem}
-    .veille-desc{font-size:.95rem;color:#c8c8e0;line-height:1.85;margin-bottom:1.5rem}
+    .veille-desc{font-size:.95rem;color:var(--soft);line-height:1.85;margin-bottom:1.5rem}
     .veille-topics{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
     .vtopic{border:1px solid var(--border);padding:1rem 1.2rem;background:var(--bg);transition:border-color .3s,transform .3s}
     .vtopic:hover{border-color:var(--accent2);transform:translateY(-2px)}
     .vtopic-icon{font-size:1.4rem;margin-bottom:.5rem}
     .vtopic-name{font-size:.88rem;font-weight:700;margin-bottom:.2rem}
-    .vtopic-sub{font-size:.78rem;color:#b8b8d0;line-height:1.6}
+    .vtopic-sub{font-size:.78rem;color:var(--soft);line-height:1.6}
 
     /* ── PROJETS ── */
     #projets{padding:6rem 3rem;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
@@ -153,7 +163,7 @@
     .proj-num{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted);letter-spacing:.1em;margin-bottom:.4rem}
     .proj-type{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--accent2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem}
     .proj-name{font-size:1.05rem;font-weight:700;margin-bottom:.5rem}
-    .proj-desc{font-size:.85rem;color:#c0c0d8;line-height:1.7;margin-bottom:.9rem}
+    .proj-desc{font-size:.85rem;color:var(--soft);line-height:1.7;margin-bottom:.9rem}
     .proj-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1rem}
     .proj-tag{padding:.2rem .55rem;border:1px solid var(--border);font-size:.68rem;color:var(--muted);font-family:'DM Mono',monospace}
     .proj-files{display:flex;flex-wrap:wrap;gap:.4rem}
@@ -234,7 +244,7 @@
     .certif-ico{font-size:2rem;flex-shrink:0}
     .certif-org{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem}
     .certif-name{font-size:1rem;font-weight:700;margin-bottom:.45rem}
-    .certif-desc{font-size:.83rem;color:#c0c0d8;line-height:1.7}
+    .certif-desc{font-size:.83rem;color:var(--soft);line-height:1.7}
     .certif-note{margin-top:.6rem;font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.05em}
 
     /* ── EXPERIENCE ── */
@@ -244,12 +254,12 @@
     .xp-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:1.6rem}
     .xp-date{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--accent);letter-spacing:.1em;margin-bottom:.35rem}
     .xp-title{font-size:1.25rem;font-weight:800}
-    .xp-org{font-size:.9rem;color:#b8b8d0;margin-top:.25rem;font-weight:600}
+    .xp-org{font-size:.9rem;color:var(--soft);margin-top:.25rem;font-weight:600}
     .xp-badge{padding:.35rem .85rem;border:1px solid rgba(0,229,160,.35);font-family:'DM Mono',monospace;font-size:.68rem;color:var(--accent);white-space:nowrap}
     .xp-items{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.9rem}
     .xp-item{display:flex;gap:.75rem;align-items:flex-start}
     .xp-arr{color:var(--accent);font-size:1rem;flex-shrink:0;line-height:1.65}
-    .xp-txt{font-size:.88rem;color:#c8c8e0;line-height:1.7}
+    .xp-txt{font-size:.88rem;color:var(--soft);line-height:1.7}
 
     /* ── PARCOURS ── */
     #parcours{padding:7rem 3rem;border-top:1px solid var(--border)}
@@ -261,7 +271,7 @@
     .tdate{font-family:'DM Mono',monospace;font-size:.67rem;color:var(--accent);letter-spacing:.1em;margin-bottom:.35rem}
     .trole{font-size:1.05rem;font-weight:700;margin-bottom:.18rem;color:var(--text)}
     .torg{font-size:.84rem;color:#a0a0b8;margin-bottom:.65rem;font-weight:600}
-    .tdesc{font-size:.88rem;color:#c8c8d8;line-height:1.8}
+    .tdesc{font-size:.88rem;color:var(--soft);line-height:1.8}
     .tbadge{display:inline-block;margin-top:.5rem;padding:.18rem .55rem;border:1px solid rgba(0,229,160,.35);font-family:'DM Mono',monospace;font-size:.65rem;color:var(--accent);letter-spacing:.07em}
 
     /* ── CONTACT ── */
@@ -337,19 +347,22 @@
   <!-- NAV -->
   <nav>
     <div class="nav-logo">YA<span style="color:var(--muted)">.</span></div>
-    <div class="nav-links">
-      <a href="#about">À propos</a>
-      <a href="#skills">Compétences</a>
-      <a href="#veille">Veille</a>
-      <a href="#projets">Projets</a>
-      <a href="#certifs">Certifications</a>
-      <a href="#experience">Expérience</a>
-      <a href="#parcours">Parcours</a>
-      <a href="#contact">Contact</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#about">À propos</a>
+        <a href="#skills">Compétences</a>
+        <a href="#veille">Veille</a>
+        <a href="#projets">Projets</a>
+        <a href="#certifs">Certifications</a>
+        <a href="#experience">Expérience</a>
+        <a href="#parcours">Parcours</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Basculer le thème" title="Mode clair / sombre">🌙</button>
+      <button class="burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <button class="burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
     <a href="#about"      onclick="closeMenu()">À propos</a>
@@ -745,6 +758,20 @@
   </div>
 
   <script>
+    /* ── THEME TOGGLE ── */
+    function applyThemeIcon(){
+      const isLight=document.documentElement.getAttribute('data-theme')==='light';
+      document.getElementById('themeToggle').textContent=isLight?'☀️':'🌙';
+    }
+    function toggleTheme(){
+      const html=document.documentElement;
+      const isLight=html.getAttribute('data-theme')==='light';
+      if(isLight){html.removeAttribute('data-theme');try{localStorage.setItem('ya_theme','dark')}catch(e){}}
+      else{html.setAttribute('data-theme','light');try{localStorage.setItem('ya_theme','light')}catch(e){}}
+      applyThemeIcon();
+    }
+    applyThemeIcon();
+
     /* ── CONTACT MODAL ── */
     function openContactModal(){
       document.getElementById('contactOverlay').classList.add('open');
