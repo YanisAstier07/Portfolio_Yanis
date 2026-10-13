@@ -15,6 +15,7 @@
       --text:#f0f0f8;--muted:#b0b0c8;--card:#13131f;--soft:#c8c8e0;
       --nav-bg:rgba(7,7,13,.9);--menu-bg:rgba(7,7,13,.98);--grid:rgba(255,255,255,.012);
       --nav-h:64px;
+      --title-weight:600; /* graisse des grands titres : plus bas = moins étiré (Syne s'élargit avec la graisse) */
       /* marge latérale : 3rem minimum, contenu centré et limité à ~1240px sur grand écran */
       --pad-x:max(3rem,calc((100% - 1240px)/2));
     }
@@ -62,7 +63,7 @@
     #hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(--nav-h) + 3rem) var(--pad-x) 5rem}
     .eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-family:'DM Mono',monospace;font-size:.72rem;color:var(--accent);letter-spacing:.12em;margin-bottom:1.8rem;animation:up .8s .05s both}
     .eyebrow::before,.eyebrow::after{content:'';display:block;width:22px;height:1px;background:var(--accent)}
-    .hero-name{font-size:clamp(3.2rem,10vw,8rem);font-weight:800;line-height:.88;letter-spacing:-.03em;animation:up .85s .1s both}
+    .hero-name{font-size:clamp(3.2rem,10vw,8rem);font-weight:var(--title-weight);line-height:.88;letter-spacing:-.03em;animation:up .85s .1s both}
     .hero-name .stroke{color:transparent;-webkit-text-stroke:1.5px var(--accent)}
     .hero-sub{margin:2rem auto 0;max-width:560px;font-size:1rem;color:var(--muted);line-height:1.75;animation:up .85s .2s both}
     .hero-sub strong{color:var(--text)}
@@ -82,7 +83,7 @@
     /* ── SHARED ── */
     .label{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem}
     .label::before{content:'';display:block;width:18px;height:1px;background:var(--accent)}
-    .sec-title{font-size:clamp(1.9rem,4vw,3rem);font-weight:800;line-height:1.05;margin-bottom:1.5rem}
+    .sec-title{font-size:clamp(1.9rem,4vw,3rem);font-weight:var(--title-weight);line-height:1.05;margin-bottom:1.5rem}
 
     /* ── ABOUT ── */
     #about{padding:7rem var(--pad-x);display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
@@ -183,7 +184,7 @@
     .xp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
     .xp-top{margin-bottom:1.4rem}
     .xp-date{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--accent);letter-spacing:.1em;margin-bottom:.35rem}
-    .xp-title{font-size:1.2rem;font-weight:800}
+    .xp-title{font-size:1.2rem;font-weight:var(--title-weight)}
     .xp-org{font-size:.9rem;color:var(--soft);margin-top:.25rem;font-weight:600}
     .xp-items{display:flex;flex-direction:column;gap:.8rem}
     .xp-item{display:flex;gap:.75rem;align-items:flex-start}
@@ -207,7 +208,7 @@
 
     /* ── CONTACT ── */
     #contact{padding:8rem var(--pad-x);text-align:center;border-top:1px solid var(--border)}
-    .contact-title{font-size:clamp(2.2rem,7vw,5.5rem);font-weight:800;line-height:.92;letter-spacing:-.03em;margin-bottom:1.5rem}
+    .contact-title{font-size:clamp(2.2rem,7vw,5.5rem);font-weight:var(--title-weight);line-height:.92;letter-spacing:-.03em;margin-bottom:1.5rem}
     .contact-title .ac{color:var(--accent)}
     .contact-sub{font-size:.95rem;color:var(--muted);max-width:460px;margin:0 auto 3rem;line-height:1.75}
     .contact-links{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap}
