@@ -166,6 +166,34 @@
     .proj-link{display:inline-flex;align-items:center;gap:.3rem;padding:.3rem .7rem;border:1px solid var(--accent2);font-family:'DM Mono',monospace;font-size:.68rem;color:var(--accent2);text-decoration:none;transition:background .2s,color .2s}
     .proj-link:hover{background:var(--accent2);color:#fff}
 
+    /* ── ONGLETS (réalisations) ── */
+    .tabs{display:flex;gap:.4rem;margin-top:1.8rem;border-bottom:1px solid var(--border);flex-wrap:wrap}
+    .tab{background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;padding:.8rem 1.3rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:color .2s,border-color .2s}
+    .tab:hover{color:var(--text)}
+    .tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+    .tab-panel[hidden]{display:none}
+
+    /* ── ÉPREUVE E6 ── */
+    .e6-intro{font-size:.92rem;color:var(--soft);line-height:1.8;max-width:760px;margin-top:2rem}
+    .e6-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:1.5rem;margin-top:2rem;align-items:start}
+    .e6-meta{display:grid;grid-template-columns:auto 1fr;gap:.45rem 1.1rem;margin:0 0 1.1rem;font-size:.82rem}
+    .e6-meta dt{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;padding-top:.2rem}
+    .e6-meta dd{color:var(--soft);line-height:1.6}
+    .folder{border:1px solid var(--border);background:var(--bg);margin-top:1.3rem}
+    .folder-head{display:flex;align-items:center;gap:.6rem;padding:.7rem 1rem;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+    .file-row{display:flex;align-items:center;gap:.9rem;padding:.8rem 1rem;border-bottom:1px solid var(--border);text-decoration:none;color:var(--text);transition:background .2s}
+    .file-row:last-child{border-bottom:none}
+    .file-row:hover{background:var(--surface)}
+    .file-ico{font-size:1.3rem;flex-shrink:0}
+    .file-body{flex:1;min-width:0}
+    .file-name{font-size:.88rem;font-weight:700}
+    .file-meta{font-size:.7rem;color:var(--muted);margin-top:.1rem;line-height:1.5}
+    .file-act{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--accent2);letter-spacing:.08em;text-transform:uppercase;flex-shrink:0}
+    .proj-card.is-empty{border-style:dashed;background:transparent}
+    .proj-card.is-empty:hover{transform:none}
+    .e6-soon{display:flex;align-items:center;gap:.9rem;border:1px dashed var(--border);padding:1.6rem 1.2rem;margin-top:1.3rem;color:var(--muted);font-size:.84rem;line-height:1.6}
+    .e6-soon span{font-size:1.8rem;flex-shrink:0}
+
     /* ── CERTIFS ── */
     #certifs{padding:6rem var(--pad-x)}
     .certifs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:1.4rem;margin-top:2rem}
@@ -498,6 +526,12 @@
   <section id="projets">
     <div class="label">Projets</div>
     <h2 class="sec-title" style="margin-bottom:0">Mes réalisations</h2>
+    <div class="tabs" role="tablist" aria-label="Catégories de réalisations">
+      <button class="tab active" role="tab" id="tab-projets" aria-selected="true" aria-controls="panel-projets" onclick="switchTab('projets')">Projets</button>
+      <button class="tab" role="tab" id="tab-e6" aria-selected="false" aria-controls="panel-e6" tabindex="-1" onclick="switchTab('e6')">Épreuve E6</button>
+    </div>
+
+    <div class="tab-panel" id="panel-projets" role="tabpanel" aria-labelledby="tab-projets">
     <div class="projets-grid">
 
       <article class="proj-card sr">
@@ -568,6 +602,76 @@
         </div>
       </article>
 
+    </div>
+    </div>
+
+    <div class="tab-panel" id="panel-e6" role="tabpanel" aria-labelledby="tab-e6" hidden>
+      <p class="e6-intro">
+        Épreuve E6 — Administration des systèmes et des réseaux (option SISR), session 2026.
+        Pour chaque réalisation professionnelle, retrouvez la fiche descriptive, le dossier et les schémas.
+      </p>
+      <div class="e6-grid">
+
+        <article class="proj-card">
+          <div class="proj-body">
+            <div class="proj-num">Réalisation professionnelle n°1</div>
+            <div class="proj-type">Réseau — Haute disponibilité</div>
+            <h3 class="proj-name">Mise en place d'un moyen de continuité de services via le protocole HSRP</h3>
+            <dl class="e6-meta">
+              <dt>Période</dt><dd>Du 12/11/2026 au 26/11/2026</dd>
+              <dt>Lieu</dt><dd>Lycée Le Rebours, Paris 13</dd>
+              <dt>Modalité</dt><dd>Seul</dd>
+              <dt>Compétences</dt><dd>Concevoir · Installer, tester et déployer · Exploiter, dépanner et superviser une solution d'infrastructure réseau</dd>
+            </dl>
+            <p class="proj-desc">
+              Mise en place en autonomie d'une passerelle haute disponibilité avec le protocole HSRP sur une maquette comprenant deux routeurs,
+              deux commutateurs, des postes clients répartis en VLAN 10 et 20, et un serveur. Résultat attendu : bascule automatique du trafic
+              vers le routeur de secours en cas de panne du routeur actif, sans coupure pour les hôtes.
+            </p>
+            <div class="proj-tags">
+              <span class="proj-tag">HSRP</span><span class="proj-tag">VLAN</span><span class="proj-tag">Cisco Packet Tracer</span><span class="proj-tag">ping / tracert</span><span class="proj-tag">show standby</span>
+            </div>
+
+            <div class="folder">
+              <div class="folder-head"><span>📁</span> Dossier — Réalisation n°1 (HSRP)</div>
+              <a class="file-row" href="E6/Dossier_E6_HSRP_VLAN_Yanis_Astier.docx" download>
+                <span class="file-ico">📘</span>
+                <span class="file-body"><div class="file-name">Dossier E6 — HSRP &amp; VLAN</div><div class="file-meta">Document Word (.docx)</div></span>
+                <span class="file-act">Télécharger</span>
+              </a>
+              <a class="file-row" href="E6/Realisation_professionnelle_1.pdf" target="_blank" rel="noopener">
+                <span class="file-ico">📋</span>
+                <span class="file-body"><div class="file-name">Fiche de réalisation professionnelle</div><div class="file-meta">Annexe VII-1-A — PDF</div></span>
+                <span class="file-act">Ouvrir</span>
+              </a>
+              <a class="file-row" href="E6/Schema_reseau_HSRP_drawio.png" target="_blank" rel="noopener">
+                <span class="file-ico">🗺️</span>
+                <span class="file-body"><div class="file-name">Schéma réseau</div><div class="file-meta">Image PNG — réalisé avec draw.io</div></span>
+                <span class="file-act">Ouvrir</span>
+              </a>
+              <a class="file-row" href="E6/Tp_HSRP_packet_tracer.pkt" download>
+                <span class="file-ico">🧩</span>
+                <span class="file-body"><div class="file-name">Schéma Cisco — maquette Packet Tracer</div><div class="file-meta">Fichier .pkt — à ouvrir avec Cisco Packet Tracer</div></span>
+                <span class="file-act">Télécharger</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj-card is-empty">
+          <div class="proj-body">
+            <div class="proj-num">Réalisation professionnelle n°2</div>
+            <div class="proj-type">Infrastructure &amp; Réseaux</div>
+            <h3 class="proj-name">NeuroLink Clinic — Infrastructure sécurisée</h3>
+            <p class="proj-desc">Projet mené à l'InfraLab (Proxmox VE, pfSense, DMZ / LAN / DATA, MariaDB). Voir la carte du projet dans l'onglet « Projets ».</p>
+            <div class="e6-soon">
+              <span>📁</span>
+              <div>Dossier à venir : la fiche de réalisation, le dossier E6 et les schémas seront ajoutés ici.</div>
+            </div>
+          </div>
+        </article>
+
+      </div>
     </div>
   </section>
 
@@ -766,6 +870,18 @@
       sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id});
       navAs.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+cur?'var(--text)':''});
     },{passive:true});
+
+    /* ── ONGLETS RÉALISATIONS ── */
+    function switchTab(name){
+      ['projets','e6'].forEach(n=>{
+        const active=n===name;
+        const tab=document.getElementById('tab-'+n);
+        tab.classList.toggle('active',active);
+        tab.setAttribute('aria-selected',active?'true':'false');
+        tab.tabIndex=active?0:-1;
+        document.getElementById('panel-'+n).hidden=!active;
+      });
+    }
 
     /* ── FRISE DU PARCOURS ── */
     const tobs=new IntersectionObserver(entries=>{
